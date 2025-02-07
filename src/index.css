@@ -7,8 +7,8 @@
   box-sizing: border-box;
 
   color-scheme: light dark;
-  color: #4a4a4a;
-  background-color: #d9d7d7;
+  color: text;
+  background-color: bg;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -35,9 +35,71 @@ h1 {
 }
 
 .nav-header a {
-  @apply p-4 rounded-sm no-underline transition-colors duration-200 hover:text-gray-900;
+  @apply p-4 no-underline;
 }
 
 .modal-class a {
-  @apply text-gray-400 border-b-2 border-gray-200  hover:text-gray-200 transition-colors duration-200 py-6 hover:bg-[#252a85] block;
+  @apply text-gray-400 hover:text-gray-300 transition-colors duration-200 py-4 hover:bg-[#14487d] block text-sm sm:text-base;
+}
+
+/* entrance */
+.modal-animation {
+  animation: fade-slide-in 0.3s linear forwards;
+  opacity: 0;
+}
+
+.modal-animation:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.modal-animation:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.modal-animation:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.modal-animation:nth-child(5) {
+  animation-delay: 0.5s;
+}
+@keyframes fade-slide-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* exit */
+.modal-exit {
+  animation: fade-slide-out 0.3s linear forwards;
+}
+
+.modal-exit:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.modal-exit:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.modal-exit:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.modal-exit:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.modal-exit:nth-child(5) {
+  animation-delay: 0.1s;
+}
+@keyframes fade-slide-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
