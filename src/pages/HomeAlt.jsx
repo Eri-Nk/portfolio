@@ -30,12 +30,12 @@ const Home = () => {
           - Make them absolutely positioned and stacked on each other
           - Set 100% opacity on the current slide
           - Set 0% opacity on inactive slides
-          - Set transition duration for each image the your desired fade duration
+          - Set transition duration for each image then your desired fade duration
            */
           return (
             <img
               src={img}
-              className={`w-full absolute top-0 left-0 h-screen transition-opacity duration-[3000ms] ${
+              className={`w-full absolute top-0 left-0 h-screen cover transition-opacity duration-[3000ms] ${
                 slideIndex === index ? "opacity-100" : "opacity-0"
               }`}
             />
