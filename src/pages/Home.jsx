@@ -9,7 +9,6 @@ const homeImages = [imageOne, imageTwo, imageThree];
 
 const Home = () => {
   const [slideIndex, setSlideIndex] = useState(0);
-  const [fade, setFade] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -17,22 +16,19 @@ const Home = () => {
       setSlideIndex((prevIndex) =>
         prevIndex === homeImages.length - 1 ? 0 : prevIndex + 1
       );
-      setTimeout(() => {
-        setFade(false);
-      }, 300);
-    }, 5000);
+    }, 7000);
 
     return () => clearInterval(timer);
   }, []);
 
   return (
     <div className="home">
-      <div className="min-h-screen bg-center bg-cover transition-opacity duration-300 ease-linear relative flex items-center p-4">
+      <div className="relative p-4 h-screen">
         {homeImages.map((img, index) => (
           <img
             key={index}
             src={img}
-            className={`w-full absolute top-0 left-0 h-screen object-cover transition-opacity duration-[3000ms] ${
+            className={`h-full w-full absolute top-0 left-0  object-cover transition-opacity duration-[3000ms] z-0 ${
               slideIndex === index ? "opacity-100" : "opacity-0"
             }`}
             alt={`Slide ${index + 1}`}
