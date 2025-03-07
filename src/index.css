@@ -26,7 +26,7 @@ a:hover {
 }
 
 body {
-  @apply p-0 m-0;
+  @apply p-0 m-0 text-text;
 }
 
 h1 {
@@ -39,7 +39,16 @@ h1 {
 }
 
 .modal-class a {
-  @apply text-gray-400 hover:text-gray-300 transition-colors duration-200 py-4 hover:bg-[#14487d] block text-sm sm:text-base;
+  @apply text-gray-400 hover:text-white transition-colors duration-300 py-4 hover:bg-[#14487d] block text-sm sm:text-base;
+}
+
+/* modal-active to simulate navlink-isactive for smaller devices */
+.modal-class .modal-active {
+  @apply text-white;
+}
+
+.heading {
+  @apply text-center text-3xl md:text-4xl font-bold mb-8 text-primary;
 }
 
 /* entrance */
@@ -102,4 +111,14 @@ h1 {
   to {
     opacity: 0;
   }
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

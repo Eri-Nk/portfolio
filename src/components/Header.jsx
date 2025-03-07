@@ -9,11 +9,11 @@ const Header = ({
   stage,
 }) => {
   return (
-    <header className="flex items-center justify-between px-4 py-2 bg-gray-300 shadow-lg z-50 relative">
+    <header className="flex items-center justify-between px-4 py-2 bg-gray-300 z-50 fixed top-0 inset-x-0">
       {/* logo will replace the name */}
       <Link to="/home">
         <div
-          className="my-logo flex flex-col items-start w-32 gap-1 text-primary"
+          className="my-logo flex flex-col items-start w-32 gap-1 text-secondary"
           style={{ cursor: "pointer" }}
         >
           <span className="font-bold text-xl">Eri</span>

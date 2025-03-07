@@ -22,11 +22,11 @@ const NavLinks = ({ isNavDropdownOpen, setIsNavDropdownOpen, stage }) => {
             to={`/${text.toLowerCase()}`}
             className={({
               isActive,
-            }) => `hover:text-gray-900 hover:font-semibold
+            }) => `hover:text-gray-900 hover:font-semibold transition-colors duration-300
               ${
                 isActive
-                  ? " text-gray-900 font-semibold modal-active"
-                  : " text-gray-500"
+                  ? "text-gray-900 font-semibold modal-active"
+                  : "text-gray-600"
               }`}
             onClick={() => {
               setIsNavDropdownOpen(false);

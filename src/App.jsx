@@ -1,7 +1,8 @@
 import { Routes, Route, Navigate, useLocation } from "react-router";
 import Header from "./components/Header";
-import { About, Home } from "./pages";
+import { About, Home, ProjectDetail } from "./pages";
 import { useState, useEffect } from "react";
+import { projects } from "./data/projects";
 
 const routes = [
   { path: "/home", element: <Home /> },
@@ -51,7 +52,7 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen pt-[4.5rem]">
       {isNavDropdownOpen && (
         <div
           className="fixed z-30 right-0 bottom-0 top-0 left-0 bg-black/50"
@@ -70,6 +71,15 @@ const App = () => {
           <Route path="/" element={<Navigate to="/home" />} />
           {routes.map(({ path, element }, idx) => (
             <Route key={idx} path={path} element={element} />
+          ))}
+
+          {/* each project page */}
+          {projects.map((project, index) => (
+            <Route
+              key={index}
+              path={project.link}
+              element={<ProjectDetail project={project} />}
+            />
           ))}
         </Routes>
       </main>
