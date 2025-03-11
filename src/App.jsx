@@ -52,7 +52,7 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen pt-[4.5rem]">
+    <div className="flex flex-col min-h-screen pt-[4rem]">
       {isNavDropdownOpen && (
         <div
           className="fixed z-30 right-0 bottom-0 top-0 left-0 bg-black/50"

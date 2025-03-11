@@ -1,31 +1,40 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import projectDetailBg from "../assets/home-bg/projectDetailBg.jfif";
-import { FaAngleRight } from "react-icons/fa6";
-import { FaAngleLeft } from "react-icons/fa6";
 import { Link } from "react-router";
 import { FaChevronLeft, FaChevronRight, FaSearchPlus } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+
+// import required modules
+import { FreeMode, Navigation, Thumbs } from "swiper/modules";
 
 const ProjectDetail = ({ project }) => {
-  const [slideIndex, setSlideIndex] = useState(0);
-
-  const nextSlide = (idx = 0, ignoreIndexState = false) => {
-    if (ignoreIndexState) {
-      setSlideIndex(idx);
-      return;
-    }
-    setSlideIndex((prevIndex) =>
-      prevIndex === project.screenShots.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevSlide = (idx) => {
-    setSlideIndex((prevIndex) =>
-      prevIndex === 0 ? project.screenShots.length - 1 : prevIndex - 1
-    );
-  };
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const swiperRef = useRef(null);
+  const modalSwiperRef = useRef(null);
 
   const capitalizeFirstletter = (str) =>
     str.replace(/\b\w/gi, (boundaryWord) => boundaryWord.toUpperCase());
+
+  const checkTarget = (e) => {
+    if (e.target === e.currentTarget) {
+      setIsModalOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = "hidden"; // Disable scrolling
+    } else {
+      document.body.style.overflow = "auto"; // Restore scrolling
+    }
+  }, [isModalOpen]);
 
   return (
     <div className="flex flex-col">
@@ -53,69 +62,135 @@ const ProjectDetail = ({ project }) => {
         </ul>
       </div>
 
+      {/* image and explanation section */}
       <div className="flex flex-col md:flex-row gap-8">
+        {/* modal images */}
+        {isModalOpen && (
+          <div className="fixed inset-0 flex items-center justify-center z-20">
+            {/* Overlay */}
+            <div
+              className="absolute inset-0 bg-black/85"
+              onClick={checkTarget}
+            ></div>
+
+            {/* Modal Container */}
+            <div className="relative max-w-[90vw] md:max-w-[70vw] lg:max-w-[50vw] bg-bg rounded-lg z-30 p-4">
+              <Swiper
+                navigation={true}
+                modules={[Navigation]}
+                initialSlide={activeIndex - 1}
+                onSwiper={(swiper) => (modalSwiperRef.current = swiper)}
+              >
+                {project.screenShots.map((screenShot, index) => (
+                  <SwiperSlide key={index}>
+                    <img
+                      src={screenShot.src}
+                      alt={`${project.title} ${screenShot.caption}`}
+                      loading="lazy"
+                      className="w-full h-auto object-cover lg:object-contain rounded-lg"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* Close Button */}
+              <button
+                className="absolute top-2 right-2 bg-white hover:bg-gray-200 text-black w-8 h-8 rounded-full flex items-center justify-center shadow-md z-40"
+                onClick={() => setIsModalOpen(false)}
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* image container */}
-        <div className="w-full md:w-3/5 relative">
+        <div className="w-full md:w-3/5 relative bg-bg p-4">
           {/* main image */}
           <div className="relative ">
-            {project.screenShots.map((screenShot, index) => (
-              <img
-                key={index}
-                src={screenShot.src}
-                alt={`${project.title} ${screenShot.caption}`}
-                loading="lazy"
-                className={`${
-                  index === slideIndex ? "block" : "hidden"
-                } w-full h-96 object-cover rounded-lg`}
-              />
-            ))}
-
-            {/* Modal image */}
-            <div
-              className="absolute top-2 right-2 bg-black/50 text-white p-2 rounded-full cursor-pointer"
-              onClick={() => openModal()}
+            <Swiper
+              onSwiper={(swiper) => (swiperRef.current = swiper)}
+              onSlideChange={(swiper) => setActiveIndex(swiper.realIndex + 1)}
+              loop={true}
+              thumbs={{ swiper: thumbsSwiper }}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className="rounded-lg"
+              navigation={false}
             >
-              <FaSearchPlus size={24} />
-            </div>
+              {project.screenShots.map((screenShot, index) => (
+                <SwiperSlide key={index}>
+                  <img
+                    src={screenShot.src}
+                    alt={`${project.title} ${screenShot.caption}`}
+                    loading="lazy"
+                    className="w-full h-96 object-cover rounded-lg"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
 
-            {/* arrow buttons */}
-            <div className="absolute inset-y-1/2 left-2 right-2 flex justify-between items-center">
-              <FaAngleLeft
-                onClick={prevSlide}
-                className="text-white text-4xl cursor-pointer bg-black/50 p-2 rounded-full"
-              />
-              <FaAngleRight
-                onClick={nextSlide}
-                className="text-white text-4xl cursor-pointer bg-black/50 p-2 rounded-full"
-              />
+            {/* zoom section*/}
+
+            <div
+              className="absolute top-2 right-2 bg-black/50 text-white rounded-full cursor-pointer z-10 p-3"
+              onClick={() => setIsModalOpen(true)}
+            >
+              <div className="relative group">
+                <FaSearchPlus size={20} />
+                <span className=" absolute right-5 bg-gray-600 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-500 whitespace-nowrap ">
+                  Full Screen
+                </span>
+              </div>
             </div>
+          </div>
+
+          {/* index and length on small screens */}
+          <div className="block text-center mt-4">
+            {activeIndex}/{project.screenShots.length}
           </div>
 
           {/* container_thumbnail */}
           <div className="relative mt-4">
             {/* Left Arrow (Shows if Overflow) */}
-            <button className="absolute left-0 h-full bg-gradient-to-r from-gray-100 to-transparent w-6 z-10 hidden md:block">
-              <FaChevronLeft className="text-gray-700 text-xl" />
+            <button className="absolute left-0 top-[30%]  hidden sm:block p-3 bg-secondary rounded-full z-10 hover:brightness-125">
+              <FaChevronLeft
+                className="text-gray-700 text-xl"
+                onClick={() => swiperRef?.current.slidePrev()}
+              />
             </button>
 
             {/* Right Arrow (Shows if Overflow) */}
-            <button className="absolute right-0 h-full bg-gradient-to-l from-gray-100 to-transparent w-6 z-10 hidden md:block">
-              <FaChevronRight className="text-gray-700 text-xl" />
+            <button className="absolute right-0 top-[30%]  hidden sm:block p-3 bg-secondary rounded-full z-10 hover:brightness-125">
+              <FaChevronRight
+                className="text-gray-700 text-xl"
+                onClick={() => swiperRef.current?.slideNext()}
+              />
             </button>
 
-            <div className="w-full overflow-x-auto flex justify-evenly scroll-smooth snap-x no-scrollbar">
-              {project.screenShots.map((screenShot, index) => (
-                <img
-                  key={index}
-                  src={screenShot.src}
-                  alt={`${project.title} ${screenShot.caption}`}
-                  loading="lazy"
-                  className="cursor-pointer w-24 h-24 object-cover rounded-lg snap-start"
-                  onClick={() => {
-                    nextSlide(index, true);
-                  }}
-                />
-              ))}
+            <div className="w-full">
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                loop={true}
+                freeMode={true}
+                watchSlidesProgress={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                breakpoints={{
+                  320: { slidesPerView: 2, spaceBetween: 10 }, // Small screens
+                  640: { slidesPerView: 3, spaceBetween: 12 }, // Medium screens
+                  1024: { slidesPerView: 4, spaceBetween: 16 }, // Larger screens
+                }}
+              >
+                {project.screenShots.map((screenShot, index) => (
+                  <SwiperSlide key={index}>
+                    <img
+                      src={screenShot.src}
+                      alt={`${project.title} ${screenShot.caption}`}
+                      loading="lazy"
+                      className="cursor-pointer h-24 w-full rounded-lg"
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
             </div>
           </div>
         </div>

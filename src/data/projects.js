@@ -12,6 +12,7 @@ import soccerHome from "../assets/projects/soccer-home.png";
 import soccerReview from "../assets/projects/soccer-review.png";
 
 export const projects = [
+  // eriko agro object
   {
     title: "Eriko Agro",
     link: "/projects/eriko-agro",
