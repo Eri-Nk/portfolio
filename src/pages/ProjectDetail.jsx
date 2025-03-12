@@ -63,7 +63,7 @@ const ProjectDetail = ({ project }) => {
       </div>
 
       {/* image and explanation section */}
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col  md:flex-row gap-8">
         {/* modal images */}
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center z-20">
@@ -87,7 +87,7 @@ const ProjectDetail = ({ project }) => {
                       src={screenShot.src}
                       alt={`${project.title} ${screenShot.caption}`}
                       loading="lazy"
-                      className="w-full h-auto object-cover lg:object-contain rounded-lg"
+                      className="w-full max-h-[80vh] sm:max-h-[90vh] object-contain rounded-lg"
                     />
                   </SwiperSlide>
                 ))}
@@ -105,9 +105,9 @@ const ProjectDetail = ({ project }) => {
         )}
 
         {/* image container */}
-        <div className="w-full md:w-3/5 relative bg-bg p-4">
+        <div className="w-full md:w-3/5 relative bg-bg p-4 ">
           {/* main image */}
-          <div className="relative ">
+          <div className="relative">
             <Swiper
               onSwiper={(swiper) => (swiperRef.current = swiper)}
               onSlideChange={(swiper) => setActiveIndex(swiper.realIndex + 1)}
@@ -123,44 +123,36 @@ const ProjectDetail = ({ project }) => {
                     src={screenShot.src}
                     alt={`${project.title} ${screenShot.caption}`}
                     loading="lazy"
-                    className="w-full h-96 object-cover rounded-lg"
+                    className="w-full h-48 sm:h-96 md:h-[20rem] lg:h-[27rem] object-scale-down rounded-lg"
                   />
                 </SwiperSlide>
               ))}
             </Swiper>
 
-            {/* zoom section*/}
-
+            {/* Zoom Button */}
             <div
-              className="absolute top-2 right-2 bg-black/50 text-white rounded-full cursor-pointer z-10 p-3"
+              className="absolute top-0 right-0 bg-black/50 text-white rounded-full cursor-pointer z-10 p-2 "
               onClick={() => setIsModalOpen(true)}
             >
               <div className="relative group">
-                <FaSearchPlus size={20} />
-                <span className=" absolute right-5 bg-gray-600 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-500 whitespace-nowrap ">
+                <FaSearchPlus size={18} />
+                <span className="absolute right-5 bg-gray-600 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-500 whitespace-nowrap">
                   Full Screen
                 </span>
               </div>
             </div>
           </div>
 
-          {/* index and length on small screens */}
-          <div className="block text-center mt-4">
-            {activeIndex}/{project.screenShots.length}
-          </div>
-
           {/* container_thumbnail */}
           <div className="relative mt-4">
-            {/* Left Arrow (Shows if Overflow) */}
-            <button className="absolute left-0 top-[30%]  hidden sm:block p-3 bg-secondary rounded-full z-10 hover:brightness-125">
+            <button className="absolute left-0 top-[30%]  hidden md:block p-3 bg-secondary rounded-full z-10 hover:brightness-125">
               <FaChevronLeft
                 className="text-gray-700 text-xl"
                 onClick={() => swiperRef?.current.slidePrev()}
               />
             </button>
 
-            {/* Right Arrow (Shows if Overflow) */}
-            <button className="absolute right-0 top-[30%]  hidden sm:block p-3 bg-secondary rounded-full z-10 hover:brightness-125">
+            <button className="absolute right-0 top-[30%]  hidden md:block p-3 bg-secondary rounded-full z-10 hover:brightness-125">
               <FaChevronRight
                 className="text-gray-700 text-xl"
                 onClick={() => swiperRef.current?.slideNext()}
@@ -174,11 +166,8 @@ const ProjectDetail = ({ project }) => {
                 freeMode={true}
                 watchSlidesProgress={true}
                 modules={[FreeMode, Navigation, Thumbs]}
-                breakpoints={{
-                  320: { slidesPerView: 2, spaceBetween: 10 }, // Small screens
-                  640: { slidesPerView: 3, spaceBetween: 12 }, // Medium screens
-                  1024: { slidesPerView: 4, spaceBetween: 16 }, // Larger screens
-                }}
+                slidesPerView={4}
+                spaceBetween={10}
               >
                 {project.screenShots.map((screenShot, index) => (
                   <SwiperSlide key={index}>
@@ -186,7 +175,7 @@ const ProjectDetail = ({ project }) => {
                       src={screenShot.src}
                       alt={`${project.title} ${screenShot.caption}`}
                       loading="lazy"
-                      className="cursor-pointer h-24 w-full rounded-lg"
+                      className="cursor-pointer w-full h-20 sm:h-24 md:h-28 lg:h-28 object-cover rounded-lg"
                     />
                   </SwiperSlide>
                 ))}
@@ -196,7 +185,7 @@ const ProjectDetail = ({ project }) => {
         </div>
 
         {/* 📄 Project Description */}
-        <div className="w-full md:w-2/5">
+        <div className="">
           {project.body.split("\n").map((paragraph, idx) =>
             paragraph.trim() ? (
               <p key={idx} className="py-2 text-gray-800">
