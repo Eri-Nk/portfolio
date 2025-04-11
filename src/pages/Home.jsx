@@ -25,7 +25,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <div className="relative w-full min-h-screen overflow-hidden">
+      <div className="relative w-full min-h-[70vh] overflow-hidden">
         {homeImages.map((img, index) => (
           <img
             key={index}
@@ -98,7 +98,7 @@ const Home = () => {
             // project images
             project.screenShots.slice(0, 2).map((screenShot, index) => (
               <Link
-                to={project.link}
+                to={`/projects/${project.category}/${project.id}`}
                 key={index}
                 className="relative group overflow-hidden rounded-xl shadow-lg bg-gray-50"
               >

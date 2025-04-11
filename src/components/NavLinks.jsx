@@ -6,7 +6,7 @@ const NavLinks = ({ isNavDropdownOpen, setIsNavDropdownOpen, stage }) => {
       className={`list-none ${
         isNavDropdownOpen
           ? "block modal-class absolute top-[100%] left-[20%] right-[20%] bg-primary"
-          : "hidden md:flex gap-4 flex-row"
+          : "hidden md:flex gap-4 flex-row text-xl"
       }`}
     >
       {["Home", "About", "Projects", "Skills", "Contact"].map((text, idx) => (
