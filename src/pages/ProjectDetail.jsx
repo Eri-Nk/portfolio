@@ -19,8 +19,8 @@ const ProjectDetail = ({ project }) => {
   const swiperRef = useRef(null);
   const modalSwiperRef = useRef(null);
 
-  const capitalizeFirstletter = (str) =>
-    str.replace(/\b\w/gi, (boundaryWord) => boundaryWord.toUpperCase());
+  // const capitalizeFirstletter = (str) =>
+  //   str.replace(/\b\w/gi, (boundaryWord) => boundaryWord.toUpperCase());
 
   const checkTarget = (e) => {
     if (e.target === e.currentTarget) {
@@ -46,24 +46,34 @@ const ProjectDetail = ({ project }) => {
         <div className="absolute inset-0 bg-black/50"></div>
 
         {/* Project Name */}
-        <h1 className="relative text-white text-3xl font-bold z-10 py-4">
-          {capitalizeFirstletter(project.title)}
+        <h1 className="relative text-white text-3xl font-bold z-10 py-4 capitalize">
+          {project.title}
         </h1>
 
         {/* breadcrumb */}
-        <ul className="relative flex items-center space-x-2 text-gray-300 text-lg font-semibold z-10">
-          <li className="hover:underline ">
-            <Link to="/" className="visited:text-gray-300">
+        <ul className="relative flex items-center space-x-2 text-lg font-semibold z-10">
+          <li className=" text-gray-300">
+            <Link to="/" className="visited:text-gray-300 hover:underline">
               Home
             </Link>
           </li>
           <span>/</span>
-          <li>{capitalizeFirstletter(project.title)}</li>
+          <li className="capitalize text-gray-300">
+            <Link
+              to={`/projects/${project.category}#app`}
+              className="visited:text-gray-300 hover:underline"
+            >
+              {project.category.replace("-", " ")}
+            </Link>
+          </li>
+          <span>/</span>
+          <li className="capitalize text-white">{project.title}</li>
         </ul>
       </div>
 
       {/* image and explanation section */}
-      <div className="flex flex-col md:flex-row gap-8">
+
+      <div className="md:clear-both px-6 py-10">
         {/* modal images */}
         {isModalOpen && (
           <div className="fixed inset-0 flex items-center justify-center z-20">
@@ -74,7 +84,7 @@ const ProjectDetail = ({ project }) => {
             ></div>
 
             {/* Modal Container */}
-            <div className="relative max-w-[90vw] md:max-w-[70vw] lg:max-w-[50vw] bg-bg rounded-lg z-30 p-4">
+            <div className="relative max-w-[90vw] md:max-w-[70vw] lg:max-w-[50vw] bg-bg rounded-lg z-30 p-2 ">
               <Swiper
                 navigation={true}
                 modules={[Navigation]}
@@ -87,7 +97,7 @@ const ProjectDetail = ({ project }) => {
                       src={screenShot.src}
                       alt={`${project.title} ${screenShot.caption}`}
                       loading="lazy"
-                      className="w-full h-auto object-cover lg:object-contain rounded-lg"
+                      className="w-full max-h-[80vh] sm:max-h-[90vh] object-contain rounded-lg"
                     />
                   </SwiperSlide>
                 ))}
@@ -105,9 +115,10 @@ const ProjectDetail = ({ project }) => {
         )}
 
         {/* image container */}
-        <div className="w-full md:w-3/5 relative bg-bg p-4">
+
+        <div className="md:float-left md:w-2/5 md:inline-block h-auto md:mr-8">
           {/* main image */}
-          <div className="relative ">
+          <div className="relative">
             <Swiper
               onSwiper={(swiper) => (swiperRef.current = swiper)}
               onSlideChange={(swiper) => setActiveIndex(swiper.realIndex + 1)}
@@ -123,62 +134,49 @@ const ProjectDetail = ({ project }) => {
                     src={screenShot.src}
                     alt={`${project.title} ${screenShot.caption}`}
                     loading="lazy"
-                    className="w-full h-96 object-cover rounded-lg"
+                    className="w-full h-48 sm:h-96 md:h-[20rem] lg:h-[27rem] object-scale-down rounded-lg"
                   />
                 </SwiperSlide>
               ))}
             </Swiper>
 
-            {/* zoom section*/}
-
+            {/* Zoom Button */}
             <div
-              className="absolute top-2 right-2 bg-black/50 text-white rounded-full cursor-pointer z-10 p-3"
+              className="absolute top-0 right-0 bg-black/50 text-white rounded-full cursor-pointer z-10 p-2 "
               onClick={() => setIsModalOpen(true)}
+              title="full screen"
             >
               <div className="relative group">
-                <FaSearchPlus size={20} />
-                <span className=" absolute right-5 bg-gray-600 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-500 whitespace-nowrap ">
-                  Full Screen
-                </span>
+                <FaSearchPlus size={18} />
               </div>
             </div>
           </div>
 
-          {/* index and length on small screens */}
-          <div className="block text-center mt-4">
-            {activeIndex}/{project.screenShots.length}
-          </div>
-
           {/* container_thumbnail */}
-          <div className="relative mt-4">
-            {/* Left Arrow (Shows if Overflow) */}
-            <button className="absolute left-0 top-[30%]  hidden sm:block p-3 bg-secondary rounded-full z-10 hover:brightness-125">
+          <div className="relative mt-2">
+            <button className="absolute left-0 top-[30%] md:block p-1.5 md:p-3 bg-secondary rounded-full z-10 hover:brightness-125">
               <FaChevronLeft
-                className="text-gray-700 text-xl"
+                className="text-gray-700 text-sm md:text-xl"
                 onClick={() => swiperRef?.current.slidePrev()}
               />
             </button>
 
-            {/* Right Arrow (Shows if Overflow) */}
-            <button className="absolute right-0 top-[30%]  hidden sm:block p-3 bg-secondary rounded-full z-10 hover:brightness-125">
+            <button className="absolute right-0 top-[30%] md:block p-1.5 md:p-3 bg-secondary rounded-full z-10 hover:brightness-125">
               <FaChevronRight
-                className="text-gray-700 text-xl"
+                className="text-gray-700 text-sm md:text-xl"
                 onClick={() => swiperRef.current?.slideNext()}
               />
             </button>
 
-            <div className="w-full">
+            <div className="w-full mb-3">
               <Swiper
                 onSwiper={setThumbsSwiper}
                 loop={true}
                 freeMode={true}
                 watchSlidesProgress={true}
                 modules={[FreeMode, Navigation, Thumbs]}
-                breakpoints={{
-                  320: { slidesPerView: 2, spaceBetween: 10 }, // Small screens
-                  640: { slidesPerView: 3, spaceBetween: 12 }, // Medium screens
-                  1024: { slidesPerView: 4, spaceBetween: 16 }, // Larger screens
-                }}
+                slidesPerView={4}
+                spaceBetween={10}
               >
                 {project.screenShots.map((screenShot, index) => (
                   <SwiperSlide key={index}>
@@ -186,7 +184,7 @@ const ProjectDetail = ({ project }) => {
                       src={screenShot.src}
                       alt={`${project.title} ${screenShot.caption}`}
                       loading="lazy"
-                      className="cursor-pointer h-24 w-full rounded-lg"
+                      className="cursor-pointer w-full h-20 sm:h-24 md:h-28 lg:h-28 object-cover rounded-lg"
                     />
                   </SwiperSlide>
                 ))}
@@ -195,37 +193,63 @@ const ProjectDetail = ({ project }) => {
           </div>
         </div>
 
-        {/* 📄 Project Description */}
-        <div className="w-full md:w-2/5">
-          {project.body.split("\n").map((paragraph, idx) =>
-            paragraph.trim() ? (
-              <p key={idx} className="py-2 text-gray-800">
-                {paragraph}
-              </p>
-            ) : null
-          )}
-        </div>
-      </div>
+        {/*  Project Description */}
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+        {project.body.split("\n").map((paragraph, idx) =>
+          paragraph.trim() ? (
+            <p key={idx} className="py-3">
+              {paragraph}
+            </p>
+          ) : null
+        )}
+      </div>
+      <p className="text-lg font-semibold mt-6 text-center">
+        This is deployed and accessible{" "}
+        <a
+          href={project.host}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="text-secondary font-bold underline hover:text-primary"
+        >
+          here
+        </a>
+      </p>
+
+      <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Key Features */}
-          <div className="bg-white shadow-lg rounded-lg p-5">
-            <h2 className="heading">Key Feature</h2>
-            {project.keyFeatures.map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
+          <div className="bg-white shadow-md rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+            <h2 className="text-xl font-semibold text-primary mb-4">
+              Key Features
+            </h2>
+            <ul className="space-y-3  pl-5">
+              {Object.entries(project.keyFeatures).map(
+                ([title, description], index) => (
+                  <li key={index} className="flex flex-col">
+                    <span className="font-bold text-secondary">{title}</span>
+                    <span>{description}</span>
+                  </li>
+                )
+              )}
+            </ul>
           </div>
 
-          {/* techStack */}
-          <div className="bg-white shadow-lg rounded-lg p-5">
-            <h2 className="heading">TechStack</h2>
-            {Object.entries(project.techStack).map(([key, value], index) => (
-              <li key={index}>
-                <strong>{key}: </strong>
-                {value}
-              </li>
-            ))}
+          {/* Tech Stack */}
+          <div className="bg-white shadow-md rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-shadow duration-300">
+            <h2 className="text-xl font-semibold text-primary mb-4">
+              Tech Stack
+            </h2>
+            <ul className="space-y-3 text-gray-700">
+              {Object.entries(project.techStack).map(([key, value], index) => (
+                <li key={index} className="flex items-start">
+                  <span className="text-secondary font-bold mr-2">•</span>
+                  <strong className="capitalize text-secondary">
+                    {key}:
+                  </strong>{" "}
+                  <span className="ml-1">{value}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

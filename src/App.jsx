@@ -1,12 +1,21 @@
 import { Routes, Route, Navigate, useLocation } from "react-router";
 import Header from "./components/Header";
-import { About, Home, ProjectDetail } from "./pages";
+import {
+  About,
+  Home,
+  ProjectDetail,
+  AllProjects,
+  WebApps,
+  IOSApps,
+  ContactForm,
+} from "./pages";
 import { useState, useEffect } from "react";
 import { projects } from "./data/projects";
 
 const routes = [
   { path: "/home", element: <Home /> },
   { path: "/about", element: <About /> },
+  { path: "/contact", element: <ContactForm /> },
 ];
 
 const App = () => {
@@ -52,7 +61,7 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen pt-[4rem]">
+    <div className="flex flex-col min-h-screen pt-[4rem] ">
       {isNavDropdownOpen && (
         <div
           className="fixed z-30 right-0 bottom-0 top-0 left-0 bg-black/50"
@@ -73,11 +82,22 @@ const App = () => {
             <Route key={idx} path={path} element={element} />
           ))}
 
+          {/* using Outlet on Project.jsx page */}
+          <Route path="/projects" element={<AllProjects />}>
+            <Route index element={<Navigate to="web-apps" />} />
+            <Route path="web-apps" element={<WebApps projects={projects} />} />
+            {/* <Route path="mobile-apps" element={<MobileApps projects={projects} />} /> */}
+            {/* <Route
+              path="cross-platform-apps"
+              element={<CrossPlatformApps projects={projects} />}
+            /> */}
+          </Route>
+
           {/* each project page */}
           {projects.map((project, index) => (
             <Route
               key={index}
-              path={project.link}
+              path={`/projects/${project.category}/${project.id}`}
               element={<ProjectDetail project={project} />}
             />
           ))}
