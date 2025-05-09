@@ -21,9 +21,9 @@ const AllProjects = () => {
   }, [location]);
 
   return (
-    <div className="flex flex-col space-y-6 py-4 px-4">
-      <h2 className="text-2xl font-semibold pt-5 heading ">My Projects</h2>
-      <p className="text-gray-700">
+    <div className="flex flex-col py-14 px-6">
+      <h1 className="heading">My Projects</h1>
+      <p>
         Here are some of the web applications I've built, focusing on
         functionality, performance, and user-friendly design. Each project
         represents a step in my journey as a developer, applying what I’ve
@@ -32,7 +32,7 @@ const AllProjects = () => {
         user interfaces and <span className="font-bold">JavaScript</span> for
         handling interactivity.
       </p>
-      <p className="text-gray-700 mt-4">
+      <p className=" mt-4">
         I also work with backend technologies to build full-stack applications.
         Using <span className="font-bold">MongoDB</span> for database management
         and <span className="font-bold">Firebase</span> for authentication and
@@ -42,9 +42,7 @@ const AllProjects = () => {
         and API development, allowing me to create scalable and efficient
         applications.
       </p>
-      <p className="text-gray-700 mt-4">
-        Stay tuned—more exciting projects are on the way!
-      </p>
+      <p className=" mt-4">Stay tuned—more exciting projects are on the way!</p>
 
       <div className="bg-gray-100 border-l-4 border-secondary p-4 mt-6">
         <p className="text-gray-800">
@@ -57,7 +55,7 @@ const AllProjects = () => {
         </p>
       </div>
 
-      <div className="flex justify-center " id="app" ref={outletRef}>
+      <div className="flex justify-center my-8" id="app" ref={outletRef}>
         <div className="inline-flex space-x-9 shadow-lg px-3 py-2 rounded-lg bg-white">
           {categories.map(({ name, path, disabled }) =>
             disabled ? (

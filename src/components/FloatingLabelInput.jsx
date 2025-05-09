@@ -8,7 +8,7 @@ const FloatingLabelInput = ({ label, compType, name, value, onChange }) => {
         value={value}
         onChange={onChange}
         required
-        className="peer w-full px-2 py-4 border rounded-md focus:border-blue-500 outline-none placeholder-transparent  resize-none bg-white"
+        className="peer w-full px-2 py-4 border border-gray-300 rounded-md focus:border-blue-500 outline-none placeholder-transparent  resize-none bg-white"
         placeholder={label}
         rows={compType === "textarea" ? 5 : undefined}
       />
@@ -21,7 +21,7 @@ const FloatingLabelInput = ({ label, compType, name, value, onChange }) => {
             : "peer-placeholder-shown:top-1/2"
         }
     peer-placeholder-shown:text-base
-    peer-placeholder-shown:text-gray-400
+    peer-placeholder-shown:text-gray-500
 
     peer-focus:top-[0.1rem]
     peer-focus:text-[0.9rem]

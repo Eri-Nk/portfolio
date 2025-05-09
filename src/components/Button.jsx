@@ -19,7 +19,7 @@ const Button = ({
   return (
     <button
       onClick={onClick}
-      className={`w-full px-16 py-3 rounded-xl font-semibold 
+      className={` px-16 md:px-8 py-3 rounded-xl font-semibold 
         transition-all duration-300 border-2
         ${outline ? "bg-transparent" : ""}
         hover:brightness-110 active:scale-95
