@@ -7,15 +7,18 @@ import {
   AllProjects,
   WebApps,
   IOSApps,
-  ContactForm,
+  Contact,
+  Skills,
 } from "./pages";
 import { useState, useEffect } from "react";
 import { projects } from "./data/projects";
+import Footer from "./components/Footer";
 
 const routes = [
   { path: "/home", element: <Home /> },
   { path: "/about", element: <About /> },
-  { path: "/contact", element: <ContactForm /> },
+  { path: "/contact", element: <Contact /> },
+  { path: "/skills", element: <Skills /> },
 ];
 
 const App = () => {
@@ -61,7 +64,7 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen pt-[4rem] ">
+    <div className="flex flex-col min-h-screen pt-[3rem] ">
       {isNavDropdownOpen && (
         <div
           className="fixed z-30 right-0 bottom-0 top-0 left-0 bg-black/50"
@@ -103,6 +106,7 @@ const App = () => {
           ))}
         </Routes>
       </main>
+      <Footer />
     </div>
   );
 };

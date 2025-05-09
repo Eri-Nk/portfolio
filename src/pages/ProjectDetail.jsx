@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import projectDetailBg from "../assets/home-bg/projectDetailBg.jfif";
-import { Link } from "react-router";
+import projectDetailBg from "../assets/bg-photos/projectDetailBg.jfif";
 import { FaChevronLeft, FaChevronRight, FaSearchPlus } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
+import PageBanner from "../components/PageBanner";
 
 // Import Swiper styles
 import "swiper/css";
@@ -38,38 +38,11 @@ const ProjectDetail = ({ project }) => {
 
   return (
     <div className="flex flex-col">
-      <div
-        className="relative h-48 md:h-64 bg-cover bg-center flex flex-col items-center justify-center"
-        style={{ backgroundImage: `url(${projectDetailBg})` }}
-      >
-        {/*for overlay*/}
-        <div className="absolute inset-0 bg-black/50"></div>
-
-        {/* Project Name */}
-        <h1 className="relative text-white text-3xl font-bold z-10 py-4 capitalize">
-          {project.title}
-        </h1>
-
-        {/* breadcrumb */}
-        <ul className="relative flex items-center space-x-2 text-lg font-semibold z-10">
-          <li className=" text-gray-300">
-            <Link to="/" className="visited:text-gray-300 hover:underline">
-              Home
-            </Link>
-          </li>
-          <span>/</span>
-          <li className="capitalize text-gray-300">
-            <Link
-              to={`/projects/${project.category}#app`}
-              className="visited:text-gray-300 hover:underline"
-            >
-              {project.category.replace("-", " ")}
-            </Link>
-          </li>
-          <span>/</span>
-          <li className="capitalize text-white">{project.title}</li>
-        </ul>
-      </div>
+      <PageBanner
+        title={project.title}
+        category={project.category}
+        bg={projectDetailBg}
+      />
 
       {/* image and explanation section */}
 
@@ -203,7 +176,7 @@ const ProjectDetail = ({ project }) => {
           ) : null
         )}
       </div>
-      <p className="text-lg font-semibold mt-6 text-center">
+      <p className="text-lg font-semibold mt-4 text-center">
         This is deployed and accessible{" "}
         <a
           href={project.host}

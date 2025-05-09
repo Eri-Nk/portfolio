@@ -1,6 +1,6 @@
-import imageOne from "../assets/home-bg/imageOne.jpg";
-import imageTwo from "../assets/home-bg/imageTwo.jpg";
-import imageThree from "../assets/home-bg/imageThree.jpeg";
+import imageOne from "../assets/bg-photos/imageOne.jpg";
+import imageTwo from "../assets/bg-photos/imageTwo.jpg";
+import imageThree from "../assets/bg-photos/imageThree.jpeg";
 import { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
 import Button from "../components/Button";
@@ -62,13 +62,13 @@ const Home = () => {
           Hi, I'm Erifamonyo 'Eri' Chukwuma Nkobo, a developer on a journey of
           endless learning and growth.
         </p>
-        <Link to="/about" className="inline-block sm:w-auto self-center">
+        <Link to="/about">
           <Button variant="secondary">More About Me</Button>
         </Link>
       </div>
 
       {/* services section */}
-      <div className=" bg-bg text-text mb-32">
+      <div className=" bg-bg text-text">
         <div className="container mx-auto text-center p-6">
           <h2 className="heading">My Services</h2>
 
@@ -81,7 +81,7 @@ const Home = () => {
               >
                 {service.icon}
                 <h3 className="text-xl font-semibold mt-4">{service.title}</h3>
-                <p className="text-sm  mt-2 text-center">
+                <p className="text-lg mt-2 text-center">
                   {service.description}
                 </p>
               </div>
@@ -91,7 +91,7 @@ const Home = () => {
       </div>
 
       {/* projects images */}
-      <div className="flex flex-col my-6 py-6 bg-bg px-4 sm:px-6 items-center">
+      <div className="flex flex-col my-48 py-6 bg-bg px-4 sm:px-6 items-center">
         <h2 className="heading">My Works</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-6xl">
           {projects.map((project, index) =>

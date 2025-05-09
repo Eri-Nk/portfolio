@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import FloatingLabelInput from "../components/FloatingLabelInput";
+import FloatingLabelInput from "./FloatingLabelInput";
 
 const ContactForm = () => {
+  // state variables
   const [formData, setFormData] = useState({
     personName: "",
     email: "",
@@ -10,6 +11,7 @@ const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState();
 
+  // form logic
   const handleChange = (e) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -37,7 +39,7 @@ const ContactForm = () => {
       setMessage("Submission Successful");
     } catch (error) {
       console.error("Error submitting form:", error.message);
-      setMessage("Error in submission: " + error.message);
+      setMessage("Error in submission. Please try again. ");
     } finally {
       setIsLoading(false);
     }
@@ -51,17 +53,16 @@ const ContactForm = () => {
       if (!isError) {
         const timeOut = setTimeout(() => {
           setMessage(null);
-        }, 7000);
+        }, 10000);
 
         return () => clearTimeout(timeOut);
       }
     }
   }, [message]);
-
   return (
-    <div>
+    <div className="flex flex-col justify-center w-[90%] max-w-md sm:max-w-lg mx-auto ">
       <form
-        className="w-[90%] max-w-md sm:max-w-lg mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg space-y-6"
+        className=" p-6 bg-white shadow-2xl rounded-lg space-y-6"
         onSubmit={handleSubmit}
       >
         <FloatingLabelInput
@@ -89,22 +90,28 @@ const ContactForm = () => {
         <button
           disabled={isLoading}
           type="submit"
-          className={`w-full py-2 px-4 rounded text-white transition-colors duration-200 ${
+          className={`relative w-full py-2 px-4 rounded text-white transition-colors duration-200 ${
             isLoading
-              ? "bg-blue-400 cursor-not-allowed"
-              : "bg-blue-500 hover:bg-blue-600"
+              ? "bg-[#6dedd4] cursor-not-allowed"
+              : "bg-secondary hover:brightness-110"
           }`}
         >
-          {isLoading ? (
-            <span className="inline-block w-5 h-5 border-2 border-t-transparent border-white rounded-full animate-spin"></span>
-          ) : (
-            "Submit"
-          )}
+          {/* Keeps button height consistent */}
+          <span className="invisible">Submit</span>
+
+          {/* Visually centered content */}
+          <span className="absolute inset-0 flex justify-center items-center">
+            {isLoading ? (
+              <span className="w-5 h-5 border-2 border-gray-200 border-t-gray-600 rounded-full animate-spin"></span>
+            ) : (
+              "Submit"
+            )}
+          </span>
         </button>
       </form>
       {message && (
         <div
-          className={`mt-4 p-3 bg-gray-100 border-l-4 rounded 
+          className={`mt-4 p-2 bg-gray-100 border-l-4 rounded text-center 
       ${
         message.toLowerCase().includes("error")
           ? "border-red-500 text-red-700"
