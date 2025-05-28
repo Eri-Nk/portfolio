@@ -7,6 +7,7 @@ import Button from "../components/Button";
 import { projects } from "../data/projects";
 import Services from "../data/services";
 import { Link } from "react-router";
+import PageHelmet from "../components/PageHelmet";
 
 const homeImages = [imageOne, imageTwo, imageThree];
 
@@ -25,6 +26,7 @@ const Home = () => {
 
   return (
     <div className="home">
+      <PageHelmet title="Home | Eri Portfolio" />
       <div className="relative w-full min-h-[70vh] overflow-hidden">
         {homeImages.map((img, index) => (
           <img
@@ -76,7 +78,7 @@ const Home = () => {
             {Services.map((service, index) => (
               <div
                 key={index}
-                className="p-6 bg-white rounded-xl shadow-lg flex flex-col items-center 
+                className="p-6 dark:bg-[#070714] rounded-xl shadow-lg flex flex-col items-center 
               hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
               >
                 {service.icon}

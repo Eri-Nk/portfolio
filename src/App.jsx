@@ -6,7 +6,6 @@ import {
   ProjectDetail,
   AllProjects,
   WebApps,
-  IOSApps,
   Contact,
   Skills,
 } from "./pages";

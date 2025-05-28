@@ -3,6 +3,7 @@ import projectDetailBg from "../assets/bg-photos/projectDetailBg.jfif";
 import { FaChevronLeft, FaChevronRight, FaSearchPlus } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import PageBanner from "../components/PageBanner";
+import PageHelmet from "../components/PageHelmet";
 
 // Import Swiper styles
 import "swiper/css";
@@ -38,6 +39,19 @@ const ProjectDetail = ({ project }) => {
 
   return (
     <div className="flex flex-col">
+      <PageHelmet
+        title={
+          project?.title
+            ? `${project.title} | Eri Portfolio`
+            : "Project | Eri Portfolio"
+        }
+        content={
+          project?.title
+            ? `Overview of ${project.title}`
+            : "Details of a project"
+        }
+      />
+
       <PageBanner
         title={project.title}
         category={project.category}
@@ -200,7 +214,7 @@ const ProjectDetail = ({ project }) => {
                 ([title, description], index) => (
                   <li key={index} className="flex flex-col">
                     <span className="font-bold text-secondary">{title}</span>
-                    <span>{description}</span>
+                    <span className="text-gray-600">{description}</span>
                   </li>
                 )
               )}
@@ -219,7 +233,7 @@ const ProjectDetail = ({ project }) => {
                   <strong className="capitalize text-secondary">
                     {key}:
                   </strong>{" "}
-                  <span className="ml-1">{value}</span>
+                  <span className="ml-1 text-gray-600">{value}</span>
                 </li>
               ))}
             </ul>

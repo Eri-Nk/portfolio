@@ -2,22 +2,27 @@ import skillsData from "../data/skillsData";
 import PageBanner from "../components/PageBanner";
 import bg from "../assets/bg-photos/projectDetailBg.jfif";
 import SkillsLoader from "../components/SkillsLoader";
+import PageHelmet from "../components/PageHelmet";
 
 const Skills = () => {
   return (
     <>
       <PageBanner bg={bg} title="Skills" />
-      <div className="py-12 px-4 bg-[#f9f9f9]">
+      <PageHelmet
+        title="Skills | Eri Portfolio"
+        content="Technologies and skills I frequently use"
+      />
+      <div className="py-12 px-7">
         <div className="max-w-5xl mx-auto text-center">
-          <p className="text-gray-600 mb-10  mx-auto text-left ">
+          <p className="mb-10  mx-auto text-left ">
             Some of my favorite tools and technologies that bring ideas to life
             — from writing clean code to deploying polished applications.
           </p>
 
-          <div className="flex flex-col gap-12">
+          <div className="flex flex-col space-y-28">
             {skillsData.map((group, idx) => (
               <div key={idx}>
-                <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4">
+                <h2 className="text-xl md:text-2xl font-semibold text-primary dark:text-[#dceeff] mb-4">
                   {group.category}
                 </h2>
 

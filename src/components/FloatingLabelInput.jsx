@@ -8,12 +8,12 @@ const FloatingLabelInput = ({ label, compType, name, value, onChange }) => {
         value={value}
         onChange={onChange}
         required
-        className="peer w-full px-2 py-4 border border-gray-300 rounded-md focus:border-blue-500 outline-none placeholder-transparent  resize-none bg-white"
+        className="peer w-full px-2 py-4  text-gray-800 dark:text-white dark:bg-[#5e5e61]  border border-gray-300 rounded-md focus:border-blue-500 dark:focus:border-white outline-none placeholder-transparent  resize-none bg-white"
         placeholder={label}
         rows={compType === "textarea" ? 5 : undefined}
       />
       <label
-        className={`absolute left-3 bg-white px-1 text-blue-500 transform transition-all duration-300 top-[0.1rem] text-[0.9rem] -translate-y-1/2 pointer-events-none
+        className={`absolute left-3 bg-white dark:bg-[#5e5e61] px-1 text-blue-500 dark:text-white transform transition-all duration-300 top-[0.1rem] text-[0.9rem] -translate-y-1/2 pointer-events-none
     
         ${
           label === "Message"
@@ -22,10 +22,12 @@ const FloatingLabelInput = ({ label, compType, name, value, onChange }) => {
         }
     peer-placeholder-shown:text-base
     peer-placeholder-shown:text-gray-500
+    dark:peer-placeholder-shown:text-white
 
     peer-focus:top-[0.1rem]
     peer-focus:text-[0.9rem]
     peer-focus:text-blue-500
+    dark:peer-focus:text-white
   `}
       >
         {label}

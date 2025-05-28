@@ -32,7 +32,9 @@ export default function SkillsLoader({ value }) {
       </svg>
 
       {/* Percentage text in center */}
-      <div className="absolute text-base md:text-xl font-bold">{value}%</div>
+      <div className="absolute text-gray-600 text-base md:text-xl font-bold">
+        {value}%
+      </div>
     </div>
   );
 }

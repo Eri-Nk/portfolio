@@ -5,7 +5,7 @@ const WebApps = ({ projects }) => {
 
   return (
     <div>
-      <h2 className="text-xl md:text-2xl text-primary mb-6 font-semibold text-center">
+      <h2 className="text-xl md:text-2xl text-primary dark:text-[#dceeff] my-12 font-semibold text-center">
         Web Apps
       </h2>
       <ul className="flex flex-col items-center space-y-20 max-w-5xl mx-auto my-6">

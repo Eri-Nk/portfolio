@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router";
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router";
+import PageHelmet from "../components/PageHelmet";
 const categories = [
   { name: "Web Apps", path: "web-apps", disabled: false },
   { name: "Mobile Apps", path: "mobile-apps", disabled: true },
@@ -22,6 +23,10 @@ const AllProjects = () => {
 
   return (
     <div className="flex flex-col py-14 px-6">
+      <PageHelmet
+        title="General projects | Eri Portfolio"
+        content="Browse through a collection of my projects"
+      />
       <h1 className="heading">My Projects</h1>
       <p>
         Here are some of the web applications I've built, focusing on
@@ -55,7 +60,7 @@ const AllProjects = () => {
         </p>
       </div>
 
-      <div className="flex justify-center my-8" id="app" ref={outletRef}>
+      <div className="flex justify-center mt-20" id="app" ref={outletRef}>
         <div className="inline-flex space-x-9 shadow-lg px-3 py-2 rounded-lg bg-white">
           {categories.map(({ name, path, disabled }) =>
             disabled ? (
@@ -73,7 +78,7 @@ const AllProjects = () => {
                 key={name}
                 to={path}
                 className={({ isActive }) =>
-                  `hover:underline ${
+                  `hover:text-green-400 ${
                     isActive ? "text-secondary" : "text-gray-600"
                   }`
                 }

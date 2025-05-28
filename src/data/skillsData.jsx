@@ -20,12 +20,12 @@ const skillsData = [
       {
         name: "HTML",
         icon: <FaHtml5 className="text-orange-600" />,
-        value: 90,
+        value: 85,
       },
       {
         name: "CSS / Tailwind",
         icon: <FaCss3Alt className="text-blue-500" />,
-        value: 85,
+        value: 80,
       },
       {
         name: "JavaScript",

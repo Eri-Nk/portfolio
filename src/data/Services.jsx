@@ -1,11 +1,4 @@
-import {
-  FaCode,
-  FaBolt,
-  FaDatabase,
-  FaSearch,
-  FaPalette,
-  FaGlobe,
-} from "react-icons/fa";
+import { FaCode, FaBolt, FaDatabase, FaPalette } from "react-icons/fa";
 
 const services = [
   {

@@ -3,12 +3,17 @@ import PageBanner from "../components/PageBanner";
 import contactBg from "../assets/bg-photos/contact_bg.jpg";
 import { HiPaperAirplane } from "react-icons/hi";
 import ContactForm from "../components/ContactForm";
+import PageHelmet from "../components/PageHelmet";
 
 const Contact = () => {
   return (
     <>
+      <PageHelmet
+        title="Contact Me | Eri Portfolio"
+        content="Feel free to reach out"
+      />
       <PageBanner title="Contact Me" bg={contactBg} />
-      <div className="bg-gray-100 px-7 ">
+      <div>
         <div className="text-center px-4 py-5 max-w-3xl mx-auto space-y-3 ">
           <p>
             Hello there, and welcome to the contact zone! Whether you're
@@ -26,8 +31,9 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="w-[90%] max-w-lg mx-auto">
-          <h3 className="text-xl font-semibold text-gray-800 text-center py-4">
+        {/* <div className="w-[90%] max-w-lg mx-auto"> */}
+        <div className="flex flex-col gap-8 justify-center align-middle ">
+          <h3 className="text-xl font-semibold text-center py-4">
             Feel free to send a message!
             <HiPaperAirplane className="text-blue-500 rotate-45 inline ml-2 align-baseline" />
           </h3>
@@ -35,7 +41,7 @@ const Contact = () => {
           <ContactForm />
         </div>
 
-        <div className="px-6 py-8 ">
+        <div className="px-6 py-16 ">
           <MapLoader />
         </div>
       </div>

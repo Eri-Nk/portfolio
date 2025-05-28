@@ -7,13 +7,25 @@
   box-sizing: border-box;
 
   color-scheme: light dark;
-  color: text;
-  background-color: bg;
+  --primary-color: #062340;
+  --secondary-color: #16a085;
+  --text-color: #4a4a4a;
+  --bg-color: #f2f3f5;
+  --accent-color: #e74c3c;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --secondary-color: #1abc9c;
+    --text-color: #ccd6dd;
+    --bg-color: #1a1a1a;
+    --accent-color: #ff6b6b;
+  }
 }
 
 a {
@@ -42,7 +54,7 @@ body {
 }
 
 .heading {
-  @apply text-3xl md:text-4xl font-bold mb-8 text-primary;
+  @apply text-3xl md:text-4xl font-bold mb-8 text-primary dark:text-[#dceeff];
 }
 
 /* entrance */

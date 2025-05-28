@@ -7,7 +7,7 @@ const PageBanner = ({ title, category, bg }) => {
       className="relative h-48 md:h-64 bg-cover bg-center flex flex-col items-center justify-center"
       style={{
         backgroundImage: bg ? `url(${bg})` : undefined,
-        backgroundColor: bg ? undefined : "bg",
+        backgroundColor: bg ? undefined : "#b0b0bf",
       }}
     >
       {/*for overlay*/}

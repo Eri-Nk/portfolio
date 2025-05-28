@@ -29,16 +29,13 @@ const ContactForm = () => {
         body: JSON.stringify(formData),
       });
       const result = await response.json();
-      console.log(result);
 
       if (!response.ok) {
         throw new Error(result.error || "Something went wrong");
       }
-
-      setFormData({ personName: "", email: "", message: "" });
       setMessage("Submission Successful");
+      setFormData({ personName: "", email: "", message: "" });
     } catch (error) {
-      console.error("Error submitting form:", error.message);
       setMessage("Error in submission. Please try again. ");
     } finally {
       setIsLoading(false);
@@ -62,7 +59,7 @@ const ContactForm = () => {
   return (
     <div className="flex flex-col justify-center w-[90%] max-w-md sm:max-w-lg mx-auto ">
       <form
-        className=" p-6 bg-white shadow-2xl rounded-lg space-y-6"
+        className=" p-6 bg-white dark:bg-[#5e5e61] shadow-2xl rounded-lg space-y-6 "
         onSubmit={handleSubmit}
       >
         <FloatingLabelInput
@@ -92,7 +89,7 @@ const ContactForm = () => {
           type="submit"
           className={`relative w-full py-2 px-4 rounded text-white transition-colors duration-200 ${
             isLoading
-              ? "bg-[#6dedd4] cursor-not-allowed"
+              ? "bg-[#106353] cursor-not-allowed"
               : "bg-secondary hover:brightness-110"
           }`}
         >
@@ -102,7 +99,7 @@ const ContactForm = () => {
           {/* Visually centered content */}
           <span className="absolute inset-0 flex justify-center items-center">
             {isLoading ? (
-              <span className="w-5 h-5 border-2 border-gray-200 border-t-gray-600 rounded-full animate-spin"></span>
+              <span className="w-5 h-5 border-2 border-gray-300 border-t-gray-500 rounded-full animate-spin"></span>
             ) : (
               "Submit"
             )}

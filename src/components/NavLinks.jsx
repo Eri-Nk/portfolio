@@ -23,7 +23,7 @@ const NavLinks = ({ isNavDropdownOpen, setIsNavDropdownOpen, stage }) => {
             className={({ isActive }) => `transition-colors duration-300 py-3
               ${
                 isActive
-                  ? "text-gray-900 font-semibold modal-active border-b-2 border-b-gray-900 "
+                  ? "text-gray-900 hover:text-gray-600 font-semibold modal-active border-b-2 border-b-gray-900 "
                   : "text-gray-600 hover:text-gray-800 hover:border-b-2 hover:border-b-gray-400"
               }`}
             onClick={() => {

@@ -38,7 +38,7 @@ const Header = ({
         className="inline-block md:hidden text-2xl"
         aria-label="Open Menu"
       >
-        <RxHamburgerMenu />
+        <RxHamburgerMenu className="text-primary" />
       </button>
     </header>
   );

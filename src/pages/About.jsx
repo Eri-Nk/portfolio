@@ -1,20 +1,22 @@
 import PageBanner from "../components/PageBanner";
 import aboutBg from "../assets/bg-photos/about_bg.jpg";
-import profilePhoto from "../assets/projects/20200411_123014.jpg";
 import ContactForm from "../components/ContactForm";
 import { TbHandFingerDown } from "react-icons/tb";
+import AboutProfilePhoto from "../assets/projects/AboutProfilePhoto.jpg";
+import PageHelmet from "../components/PageHelmet";
 
 const About = () => {
   return (
     <div>
+      <PageHelmet title="About | Eri Portfolio" content="A little about Eri" />
       <PageBanner title="About me" bg={aboutBg} />
-      <div className="flex flex-col md:clear-both md:block p-7">
+      <div className="flex flex-col md:clear-both md:block p-7 dark:text-[#ccd6dd]">
         <div
           className="md:float-left rounded-lg w-full md:w-1/3 h-80 mb-4 md:mr-6 overflow-hidden"
           style={{ backgroundColor: "#d9d7d7" }}
         >
           <img
-            src={profilePhoto}
+            src={AboutProfilePhoto}
             alt="Profile picture"
             className="w-full h-full object-cover"
           />
@@ -50,7 +52,7 @@ const About = () => {
       </div>
 
       <div className="flex flex-col gap-4 justify-center align-middle mb-16 ">
-        <p className="font-bold text-base md:text-lg text-center">
+        <p className="font-bold text-base md:text-lg text-center dark:text-[#ccd6dd]">
           <span className="block sm:inline">
             Waste no time, send a message.{" "}
           </span>
