@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
 import Button from "../components/Button";
 import { projects } from "../data/projects";
-import services from "../data/services";
+import services from "../data/services.jsx";
 import { Link } from "react-router";
 import PageHelmet from "../components/PageHelmet";
 
