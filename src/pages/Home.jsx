@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
 import Button from "../components/Button";
 import { projects } from "../data/projects";
-import Services from "../data/Services.jsx";
+import services from "../data/myServices";
 import { Link } from "react-router";
 import PageHelmet from "../components/PageHelmet";
 
@@ -75,7 +75,7 @@ const Home = () => {
           <h2 className="heading">My Services</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Services.map((service, index) => (
+            {services.map((service, index) => (
               <div
                 key={index}
                 className="p-6 dark:bg-[#070714] rounded-xl shadow-lg flex flex-col items-center 

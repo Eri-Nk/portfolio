@@ -1,6 +1,6 @@
 import { FaCode, FaBolt, FaDatabase, FaPalette } from "react-icons/fa";
 
-const services = [
+const myServices = [
   {
     icon: <FaCode className="text-4xl text-secondary" />,
     title: "Frontend Development",
@@ -24,4 +24,4 @@ const services = [
   },
 ];
 
-export default services;
+export default myServices;
