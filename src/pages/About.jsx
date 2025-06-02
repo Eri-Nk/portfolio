@@ -2,7 +2,7 @@ import PageBanner from "../components/PageBanner";
 import aboutBg from "../assets/bg-photos/about_bg.jpg";
 import ContactForm from "../components/ContactForm";
 import { TbHandFingerDown } from "react-icons/tb";
-import AboutProfilePhoto from "../assets/projects/AboutProfilePhoto.jpg";
+import AboutProfilePhotoUpdate from "../assets/projects/AboutProfilePhotoUpdate.jpg";
 import PageHelmet from "../components/PageHelmet";
 
 const About = () => {
@@ -16,7 +16,7 @@ const About = () => {
           style={{ backgroundColor: "#d9d7d7" }}
         >
           <img
-            src={AboutProfilePhoto}
+            src={AboutProfilePhotoUpdate}
             alt="Profile picture"
             className="w-full h-full object-cover"
           />

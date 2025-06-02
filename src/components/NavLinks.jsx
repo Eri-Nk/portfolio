@@ -16,15 +16,17 @@ const NavLinks = ({ isNavDropdownOpen, setIsNavDropdownOpen, stage }) => {
             isNavDropdownOpen && stage === "enter" ? "modal-animation" : ""
           } ${
             stage === "exit" ? "modal-exit" : ""
-          } border-b-2 border-gray-400 last:border-b-0 md:border-0`}
+          } last:border-b-0 border-b-2  md:border-0`}
         >
           <NavLink
             to={`/${text.toLowerCase()}`}
-            className={({ isActive }) => `transition-colors duration-300 py-3
+            className={({
+              isActive,
+            }) => `transition-all duration-300 py-3 border-b-2
               ${
                 isActive
-                  ? "text-gray-900 hover:text-gray-600 font-semibold modal-active border-b-2 border-b-gray-900 "
-                  : "text-gray-600 hover:text-gray-800 hover:border-b-2 hover:border-b-gray-400"
+                  ? "text-gray-900 hover:text-gray-600 font-semibold modal-active  border-b-gray-900 "
+                  : "text-gray-600 border-b-transparent hover:text-gray-800  hover:border-b-gray-600"
               }`}
             onClick={() => {
               setIsNavDropdownOpen(false);
