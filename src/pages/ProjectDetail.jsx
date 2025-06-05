@@ -63,7 +63,7 @@ const ProjectDetail = ({ project }) => {
       <div className="md:clear-both px-6 py-10">
         {/* modal images */}
         {isModalOpen && (
-          <div className="fixed inset-0 flex items-center justify-center z-20">
+          <div className="fixed pt-[48px] inset-0 flex items-center justify-center z-20">
             {/* Overlay */}
             <div
               className="absolute inset-0 bg-black/85"
@@ -71,7 +71,7 @@ const ProjectDetail = ({ project }) => {
             ></div>
 
             {/* Modal Container */}
-            <div className="relative max-w-[90vw] md:max-w-[70vw] lg:max-w-[50vw] bg-bg rounded-lg z-30 p-2 ">
+            <div className="relative max-w-[90vw] sm:max-w-[80vw] md:max-w-[70vw] lg:max-w-[60vw]  bg-bg rounded-lg z-30 p-2 ">
               <Swiper
                 navigation={true}
                 modules={[Navigation]}
@@ -84,7 +84,7 @@ const ProjectDetail = ({ project }) => {
                       src={screenShot.src}
                       alt={`${project.title} ${screenShot.caption}`}
                       loading="lazy"
-                      className="w-full max-h-[80vh] sm:max-h-[90vh] object-contain rounded-lg"
+                      className="w-full h-[60vh] sm:h-auto object-cover sm:object-contain rounded-lg"
                     />
                   </SwiperSlide>
                 ))}
