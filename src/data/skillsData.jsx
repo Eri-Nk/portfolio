@@ -11,6 +11,8 @@ import {
   SiFirebase,
   SiPostman,
   SiVercel,
+  SiTypescript,
+  SiRender,
 } from "react-icons/si";
 
 const skillsData = [
@@ -33,6 +35,11 @@ const skillsData = [
         value: 75,
       },
       { name: "React", icon: <FaReact className="text-cyan-400" />, value: 75 },
+      {
+        name: "TypeScript",
+        icon: <SiTypescript className="text-blue-600" />,
+        value: 65,
+      },
     ],
   },
   {
@@ -51,6 +58,11 @@ const skillsData = [
       {
         name: "Firebase",
         icon: <SiFirebase className="text-yellow-500" />,
+        value: 65,
+      },
+      {
+        name: "Render",
+        icon: <SiRender className="text-blue-500" />,
         value: 65,
       },
     ],

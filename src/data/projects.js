@@ -14,6 +14,12 @@ import soccerQuestion from "../assets/projects/soccer-question.png";
 import soccerResult from "../assets/projects/soccer-result.png";
 import soccerExplanation from "../assets/projects/soccer-explanation.png";
 
+//mensa internship project images
+import home from "../assets/projects/MPC_project/home.png";
+import cart from "../assets/projects/MPC_project/cart.png";
+import products from "../assets/projects/MPC_project/products.png";
+import selectVariants from "../assets/projects/MPC_project/selectVariants.png";
+
 export const projects = [
   // eriko agro object
   {
@@ -91,6 +97,41 @@ This project showcases efficient React state management, routing techniques, and
       frontend: "React (with CRA)",
       hosting: "Vercel",
       styling: "tailwind CSS",
+    },
+  },
+  {
+    title: "Product API (TypeScript + Prisma)",
+    category: "web-apps",
+    id: "product-api",
+    host: "https://mpc-frontend.vercel.app/",
+    screenShots: [
+      { src: home, caption: "UI Display" },
+      { src: cart, caption: "Your Cart" },
+      { src: products, caption: "Products Available" },
+      { src: selectVariants, caption: "Select a Product Variant" },
+    ],
+    body: `This project was part of a backend technical exercise for an internship. It uses TypeScript, Prisma ORM, and SQLite to manage product data through RESTful API endpoints.
+
+The main focus was on backend structure and TypeScript integration. I implemented routes for creating, reading, updating, and deleting product entries, ensuring type safety throughout the codebase. Although I relied on reference materials for setup, this project greatly improved my understanding of Prisma’s workflow, TypeScript interfaces, and how backend logic connects to a database.
+`,
+
+    keyFeatures: {
+      "Type Safety with TypeScript":
+        "Ensures reliability and consistency across all API routes using strong type definitions.",
+      "CRUD Operations":
+        "Includes endpoints for creating, reading, updating, and deleting product entries.",
+      "Prisma ORM Integration":
+        "Simplifies database interactions and schema management with Prisma's type-safe client.",
+      "SQLite Database":
+        "Lightweight relational database used for local development and testing.",
+      "Learning-Oriented Build":
+        "Developed as a hands-on way to understand backend workflows and TypeScript’s role in full-stack development.",
+    },
+
+    techStack: {
+      backend: "Node.js, Express, TypeScript, Prisma",
+      database: "SQLite",
+      hosting: "Vercel (Frontend) / Render (Backend)",
     },
   },
 ];
