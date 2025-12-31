@@ -23,11 +23,14 @@ const ContactForm = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const response = await fetch(import.meta.env.VITE_BACKEND_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/contact`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
       const result = await response.json();
 
       if (!response.ok) {
