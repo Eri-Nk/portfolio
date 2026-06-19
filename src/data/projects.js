@@ -20,7 +20,60 @@ import cart from "../assets/projects/MPC_project/cart.png";
 import products from "../assets/projects/MPC_project/products.png";
 import selectVariants from "../assets/projects/MPC_project/selectVariants.png";
 
+//shipment agro tracking
+import admin from "../assets/projects/agroTracking/admin.png";
+import logs from "../assets/projects/agroTracking/logs.png";
+import probStatement from "../assets/projects/agroTracking/probStatement.png";
+import trackingStages from "../assets/projects/agroTracking/trackingStages.png";
+
 export const projects = [
+  //shipment agro
+  {
+    title: "Agro Shipment Tracker",
+    category: "web-apps",
+    id: "agro-shipment-tracker",
+    host: "https://agro-shipment-tracker.vercel.app/",
+    screenShots: [
+      { src: trackingStages, caption: "Tracking Stages" },
+      { src: logs, caption: "Tracking Logs" },
+      { src: admin, caption: "Admin Page" },
+      { src: probStatement, caption: "Agro Problem" },
+    ],
+    body: `Agro Shipment Tracker is a full-stack tracking and administration platform built with Next.js App Router. The application simulates a logistics workflow where users can monitor shipment progress while authorized administrators manage tracking stages and delivery updates.
+    
+    The project was built to explore modern Next.js patterns including Server Components, Server Actions, middleware-based authentication, optimistic UI updates, loading states, and route protection. Public users can view shipment progress and delivery updates, while authenticated administrators can manage tracking information through a secure dashboard.
+
+    Special attention was given to user experience through loading skeletons, form state management, responsive layouts, and optimistic updates that provide immediate feedback during interactions.
+    `,
+    keyFeatures: {
+      "Shipment Tracking":
+        "Track shipment progress through multiple delivery stages with status indicators and timestamps.",
+
+      "Admin Authentication":
+        "Protected admin dashboard secured with middleware and cookie-based authentication.",
+
+      "Delivery Log Management":
+        "Add and remove delivery updates through Server Actions.",
+
+      "Optimistic Updates":
+        "New logs appear instantly while server actions complete in the background.",
+
+      "Loading States":
+        "Implemented Suspense boundaries, skeleton loaders, and form pending states for improved UX.",
+
+      "Responsive Design":
+        "Designed to work across desktop and mobile devices.",
+    },
+    techStack: {
+      framework: "Next.js 15 (App Router)",
+      language: "TypeScript",
+      styling: "Tailwind CSS",
+      rendering: "Server Components & Client Components",
+      authentication: "Cookies + Middleware",
+      dataHandling: "Server Actions",
+      hosting: "Vercel",
+    },
+  },
   // eriko agro object
   {
     title: "Eriko Agro",
