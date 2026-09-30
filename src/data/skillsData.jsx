@@ -14,6 +14,7 @@ import {
   SiTypescript,
   SiRender,
 } from "react-icons/si";
+import { RiNextjsFill } from "react-icons/ri";
 
 const skillsData = [
   {
@@ -39,6 +40,11 @@ const skillsData = [
         name: "TypeScript",
         icon: <SiTypescript className="text-blue-600" />,
         value: 65,
+      },
+      {
+        name: "Next.js",
+        icon: <RiNextjsFill className="text-black" />,
+        value: 70,
       },
     ],
   },
