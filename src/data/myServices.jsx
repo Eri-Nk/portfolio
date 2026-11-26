@@ -1,6 +1,12 @@
-import { FaCode, FaBolt, FaDatabase, FaPalette } from "react-icons/fa";
+import { FaCode, FaBolt, FaDatabase, FaPalette, FaBrain } from "react-icons/fa";
 
 const myServices = [
+  {
+    icon: <FaBrain className="text-4xl text-secondary" />,
+    title: "AI & LLM Exploration",
+    description:
+      "Exploring how AI and language models can make applications more useful and workflows smarter.",
+  },
   {
     icon: <FaCode className="text-4xl text-secondary" />,
     title: "Frontend Development",
